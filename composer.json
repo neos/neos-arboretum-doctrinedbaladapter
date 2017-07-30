@@ -1,0 +1,16 @@
+{
+  "name": "neos/arboretum-doctrinedbaladapter",
+  "type": "neos-package",
+  "description": "The Doctrine DBAL database backend for the Neos Arboretum",
+  "license": "GPL-3.0+",
+  "require": {
+    "neos/arboretum": "*",
+    "doctrine/dbal": "~2.5.0",
+    "doctrine/migrations": "~1.3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Neos\\Arboretum\\DoctrineDbalAdapter\\": "Classes"
+    }
+  }
+}
