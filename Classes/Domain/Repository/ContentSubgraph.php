@@ -17,7 +17,6 @@ use Neos\Arboretum\Domain\Entity\NodeAdapter;
 use Neos\Arboretum\DoctrineDbalAdapter\Infrastructure\Service\DbalClient;
 use Neos\Arboretum\Domain\Repository\AbstractContentSubgraph;
 use Neos\ContentRepository\Domain as ContentRepository;
-use Neos\ContentRepository\EventSourced\Domain\Model\Content\PropertyCollection;
 use Neos\Flow\Annotations as Flow;
 
 /**
@@ -117,7 +116,7 @@ class ContentSubgraph extends AbstractContentSubgraph
         $node = new NodeAdapter($this);
         $node->nodeType = $this->nodeTypeManager->getNodeType($nodeData['nodetypename']);
         $node->identifier = $nodeData['identifierinsubgraph'];
-        $node->properties = new PropertyCollection(json_decode($nodeData['properties'], true));
+        $node->properties = new ContentRepository\Model\PropertyCollection(json_decode($nodeData['properties'], true));
 
         return $node;
     }
