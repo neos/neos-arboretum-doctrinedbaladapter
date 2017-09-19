@@ -12,6 +12,8 @@ namespace Neos\Arboretum\DoctrineDbalAdapter\Domain\Repository;
  * source code.
  */
 use Neos\Arboretum\Domain as Arboretum;
+use Neos\ContentRepository\Domain as ContentRepository;
+use Neos\ContentRepository\Domain\Projection\Content as ContentProjection;
 use Neos\Flow\Annotations as Flow;
 
 /**
@@ -22,9 +24,9 @@ use Neos\Flow\Annotations as Flow;
  * @Flow\Scope("singleton")
  * @api
  */
-class ContentGraph extends Arboretum\Repository\AbstractContentGraph
+final class ContentGraph extends Arboretum\Repository\AbstractContentGraph
 {
-    protected function createSubgraph(string $editingSessionName, array $dimensionValues): Arboretum\Repository\ContentSubgraphInterface
+    protected function createSubgraph(string $editingSessionName, ContentRepository\ValueObject\DimensionValueCombination $dimensionValues): ContentProjection\ContentSubgraphInterface
     {
         return new ContentSubgraph($editingSessionName, $dimensionValues);
     }
